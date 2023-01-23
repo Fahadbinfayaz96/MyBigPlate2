@@ -10,6 +10,7 @@ class CartItems {
   final String foodType;
   double quantity;
   final double halfPrice;
+  final bool isHalfItem;
 
   CartItems({
     required this.id,
@@ -18,7 +19,8 @@ class CartItems {
     required this.tax,
     required this.quantity,
     required this.foodType,
-    required this.halfPrice
+    required this.halfPrice,
+    required this.isHalfItem,
   });
 }
 
@@ -64,27 +66,28 @@ class CartProvider with ChangeNotifier {
 
     return toPay;
   }
-  
+
   void increaseQuantity(CartItems cartItems) {
-   cartItems.quantity++;
+    cartItems.quantity++;
     notifyListeners();
-       
   }
 
   void decreaseQuantity(CartItems cartItems) {
-   cartItems.quantity--;
+    cartItems.quantity--;
     notifyListeners();
-
   }
 
   void removeItems(CartItems cartItems) {
-    _items.removeWhere((element) => element.id == cartItems.id,);
+    _items.removeWhere(
+      (element) => element.id == cartItems.id,
+    );
     notifyListeners();
   }
 
   void addItems(CartItems cartItems) {
-    if ( !_items.any((element) => element.price==cartItems.price ) || !_items.any((element) => element.halfPrice==cartItems.price)) {
-  //!_items.any((element) => element.id == cartItems.id) &&
+    if (!_items.any((element) => element.price == cartItems.price) ||
+        !_items.any((element) => element.halfPrice == cartItems.price)) {
+      //!_items.any((element) => element.id == cartItems.id) &&
       _items.add(cartItems);
       notifyListeners();
     } else {}

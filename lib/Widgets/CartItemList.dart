@@ -16,8 +16,8 @@ class CartItemList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final cartPro = Provider.of<CartProvider>(context);
-     final lstdata=Provider.of<ListOfItemsProvider>(context);
-     
+    final lstdata = Provider.of<ListOfItemsProvider>(context);
+
     return Slidable(
       endActionPane: ActionPane(motion: const ScrollMotion(), children: [
         SlidableAction(
@@ -73,12 +73,12 @@ class CartItemList extends StatelessWidget {
                             color: Colors.red,
                           ),
                     Expanded(child: SizedBox()),
-                  
                     Text(
-                      "${cartPro.items[index].price}",
+                      cartPro.items[index].isHalfItem
+                          ? "${cartPro.items[index].halfPrice}"
+                          : "${cartPro.items[index].price}",
                       style: TextStyle(fontFamily: "Mansory"),
                     )
-                  
                   ],
                 ),
                 Row(
@@ -88,7 +88,9 @@ class CartItemList extends StatelessWidget {
                     ),
                     Expanded(child: SizedBox()),
                     Text(
-                      "${cartPro.items[index].price * cartPro.items[index].quantity}",
+                      cartPro.items[index].isHalfItem
+                          ? "${cartPro.items[index].halfPrice * cartPro.items[index].quantity}"
+                          : "${cartPro.items[index].price * cartPro.items[index].quantity}",
                       style: TextStyle(fontFamily: "Mansory"),
                     )
                   ],
