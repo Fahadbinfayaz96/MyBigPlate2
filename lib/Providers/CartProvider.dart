@@ -1,5 +1,7 @@
 // ignore_for_file: prefer_typing_uninitialized_variables, unused_local_variable
 
+import 'dart:math';
+
 import 'package:flutter/cupertino.dart';
 
 class CartItems {
@@ -78,18 +80,21 @@ class CartProvider with ChangeNotifier {
   }
 
   void removeItems(CartItems cartItems) {
-    _items.removeWhere(
-      (element) => element.id == cartItems.id,
-    );
+   var r= _items.remove(cartItems);
     notifyListeners();
   }
 
   void addItems(CartItems cartItems) {
-    if (!_items.any((element) => element.price == cartItems.price) ||
-        !_items.any((element) => element.halfPrice == cartItems.price)) {
-      //!_items.any((element) => element.id == cartItems.id) &&
+    if (!_items.any((element) =>
+        element.price == cartItems.price && element.isHalfItem == false)) {
       _items.add(cartItems);
       notifyListeners();
-    } else {}
+    } else {
+      _items.add(cartItems);
+      notifyListeners();
+    }
+// if (!_items.any((element) => element.halfPrice == cartItems.halfPrice && element.isHalfItem == true))
+
+
   }
 }

@@ -6,6 +6,7 @@ import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:mybigplate2/MainWidgets/Home.dart';
 import 'package:mybigplate2/Providers/CartProvider.dart';
 import 'package:mybigplate2/my_icons_icons.dart';
 import 'package:provider/provider.dart';
@@ -22,16 +23,15 @@ class CartWidget extends StatelessWidget {
       appBar: AppBar(
           title: Text(
             "Cart",
-            style: TextStyle(color: Colors.black, fontSize: 35),
+            style: TextStyle(color: Colors.white, fontSize: 35),
           ),
-          backgroundColor: Colors.transparent,
-          elevation: 0,
+          backgroundColor: Colors.orangeAccent,
           centerTitle: true,
           leading: IconButton(
             icon: Icon(
               Icons.arrow_circle_left_outlined,
               size: 40,
-              color: Colors.black,
+              color: Colors.white,
             ),
             onPressed: () {
               Navigator.pop(context);
@@ -40,7 +40,7 @@ class CartWidget extends StatelessWidget {
       body: Column(
         children: [
           SizedBox(
-            height: _mediaQueryyy.size.height * .63,
+            height: _mediaQueryyy.size.height * .60,
             child: ListView.builder(
               itemBuilder: (context, index) {
                 return CartItemList(
@@ -72,14 +72,20 @@ class CartWidget extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text("Item Total",style: TextStyle(fontFamily: "Mansory"),),
+                      Text(
+                        "Item Total",
+                        style: TextStyle(fontFamily: "Mansory"),
+                      ),
                       Text("${cartProvider.totalAmout}"),
                     ],
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text("Tax",style: TextStyle(fontFamily: "Mansory"),),
+                      Text(
+                        "Tax",
+                        style: TextStyle(fontFamily: "Mansory"),
+                      ),
                       Text("${cartProvider.ItemTax}"),
                     ],
                   ),
@@ -87,12 +93,55 @@ class CartWidget extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text("To Pay"),
-                      Text("${cartProvider.itemToPay}",style: TextStyle(fontFamily: "Mansory"),),
+                      Text(
+                        "${cartProvider.itemToPay}",
+                        style: TextStyle(fontFamily: "Mansory"),
+                      ),
                     ],
                   ),
                 ],
               ))
         ],
+      ),
+      floatingActionButton: Container(
+        height: 70,
+        width: 70,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(38),
+        ),
+        child: FloatingActionButton(
+          backgroundColor: Colors.white,
+          elevation: 10,
+          onPressed: () {
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => home(
+                    mediaQuery: _mediaQueryyy,
+                  ),
+                ));
+          },
+          child: Center(
+            child: SizedBox(
+              height: 50,
+              width: 50,
+              child: Icon(
+                FontAwesomeIcons.home,
+                size: 40,
+                color: Colors.orange,
+              ),
+            ),
+          ),
+        ),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      bottomNavigationBar: SizedBox(
+        height: 76,
+        child: BottomAppBar(
+          color: Colors.orange,
+          shape: CircularNotchedRectangle(),
+          notchMargin: 12,
+        ),
       ),
     );
   }

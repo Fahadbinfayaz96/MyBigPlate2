@@ -28,7 +28,15 @@ class CartItemList extends StatelessWidget {
           ),
           backgroundColor: Colors.red.withOpacity(0.3),
           onPressed: ((context) {
-            cartPro.removeItems(cartPro.items[index]);
+            if (cartPro.items.any((element) =>
+                element.isHalfItem == false &&
+                element.price == lstdata.items[index].Price )) {
+              cartPro.removeItems(cartPro.items[index]);
+            } 
+            
+            else  {
+              cartPro.removeItems(cartPro.items[index]);
+            }
           }),
         )
       ]),

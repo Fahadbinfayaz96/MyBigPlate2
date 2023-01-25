@@ -166,16 +166,7 @@ class Categories extends StatelessWidget {
                       ),
                     ),
                   ),
-                  // Padding(
-                  //   padding: const EdgeInsets.only(top: 5, left: 4),
-                  //   child: Container(
-                  //       width: _mediaQuery2.size.width * .34,
-                  //       height: 40,
-                  //       child: FoodTypeWidget(
-                  //         color: Colors.green,
-                  //         color1: Colors.red,
-                  //       )),
-                  // ),
+                
                 ],
               ),
               Expanded(
@@ -212,10 +203,7 @@ class Categories extends StatelessWidget {
                                     image: DecorationImage(
                                       image: AssetImage(cat[index].image),
                                       fit: BoxFit.cover,
-                                      colorFilter: ColorFilter.mode(
-                                        Colors.black.withOpacity(.6),
-                                        BlendMode.hardLight,
-                                      ),
+                                     
                                     ),
                                   ),
                                 ),
@@ -229,7 +217,7 @@ class Categories extends StatelessWidget {
                                         fontSize: 18.5,
                                         fontWeight: FontWeight.bold,
                                         fontFamily: 'Mansory',
-                                      ), // default text styl
+                                      ), 
                                     ),
                                   ),
                                 )

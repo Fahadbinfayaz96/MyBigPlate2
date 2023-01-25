@@ -20,7 +20,7 @@ class QuantityWidget extends StatelessWidget {
       padding: EdgeInsets.all(5),
       width: 140,
       decoration: BoxDecoration(
-          color: Colors.black, borderRadius: BorderRadius.circular(12)),
+          color: Colors.orangeAccent, borderRadius: BorderRadius.circular(12)),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [

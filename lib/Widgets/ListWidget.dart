@@ -11,6 +11,7 @@ import 'package:mybigplate2/Providers/CartProvider.dart';
 import 'package:mybigplate2/Providers/ListOfItemsProvider.dart';
 import 'package:mybigplate2/Widgets/CartItemList.dart';
 import 'package:mybigplate2/Widgets/CartWidget.dart';
+import 'package:mybigplate2/Widgets/details_page.dart';
 import 'package:mybigplate2/main.dart';
 import 'package:provider/provider.dart';
 import '../my_icons_icons.dart';
@@ -35,46 +36,15 @@ class ListWidget extends StatelessWidget {
     // final dlist = dailog.items;
     return Scaffold(
       appBar: AppBar(
-          actions: [
-            Padding(
-              padding: const EdgeInsets.only(right: 12, top: 6),
-              child: Stack(
-                children: [
-                  InkWell(
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => CartWidget(),
-                          ));
-                    },
-                    child: Icon(
-                      FontAwesomeIcons.cartShopping,
-                      size: 45,
-                    ),
-                  ),
-                  Align(
-                      alignment: Alignment.center,
-                      child: Padding(
-                        padding: const EdgeInsets.only(bottom: 18, left: 22),
-                        child: Text("${cart.itemsCount.toString()}",
-                            style:
-                                TextStyle(color: Colors.white, fontSize: 18)),
-                      ))
-                ],
-              ),
-            )
-          ],
-          iconTheme: const IconThemeData(color: Colors.black),
-          backgroundColor: Colors.transparent,
-          elevation: 0,
+          iconTheme: const IconThemeData(color: Colors.white),
+          backgroundColor: Colors.orangeAccent,
           centerTitle: true,
           title: Text(
             categoryName,
             style: TextStyle(
                 fontFamily: 'Mansory',
-                color: Colors.black,
-                fontSize: _mediaQuery.size.longestSide * .04),
+                color: Colors.white,
+                fontSize: _mediaQuery.size.longestSide * .03),
           ),
           leading: IconButton(
             icon: Icon(
@@ -85,123 +55,171 @@ class ListWidget extends StatelessWidget {
               Navigator.pop(context);
             },
           )),
-      body: Container(
+      body: SafeArea(
         child: ListView.builder(
           itemBuilder: (context, index) {
             return products = CatId == lst[index].catId
-                ? Container(
-                    height: 220,
-                    margin: EdgeInsets.all(15),
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(25),
-                      boxShadow: [
-                        BoxShadow(
-                            color: Color.fromARGB(255, 239, 183, 110),
-                            blurRadius: 2,
-                            spreadRadius: 1)
-                      ],
-                    ),
-                    padding: EdgeInsets.all(20),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            lst[index].foodType == "veg"
-                                ? Icon(
-                                    MyIcons.veg,
-                                    color: Colors.green,
-                                    size: _mediaQuery.size.width * .02,
-                                  )
-                                : Icon(
-                                    MyIcons.veg,
-                                    color: Colors.red,
-                                    size: _mediaQuery.size.width * .02,
-                                  ),
-                            SizedBox(
-                              width: 5,
+                ? InkWell(
+                  onTap: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context)=>SingleWidget()));
+                  },
+                  child: Container(
+                      height: 220,
+                      width: _mediaQuery.size.width,
+                      margin: EdgeInsets.all(15),
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(25),
+                        boxShadow: [
+                          BoxShadow(
+                              color: Color.fromARGB(255, 239, 183, 110),
+                              blurRadius: 2,
+                              spreadRadius: 1)
+                        ],
+                      ),
+                      child: Row(
+                        children: [
+                          ClipRRect(
+                            borderRadius: BorderRadius.only(
+                                topLeft: Radius.circular(25),
+                                bottomLeft: Radius.circular(25)),
+                            child: Image.asset(
+                              "assets/images/platters.jpg",
+                              fit: BoxFit.cover,
                             ),
-                            Text(
-                              lst[index].itemName,
-                              style: TextStyle(
-                                  fontFamily: 'Mansory',
-                                  fontSize: 16.2,
-                                  fontWeight: FontWeight.bold),
-                            ),
-                            Expanded(child: SizedBox()),
-                            Text(
-                              lst[index].Price.toString(),
-                              style: TextStyle(
-                                  fontFamily: 'Mansory',
-                                  fontWeight: FontWeight.w500),
-                            ),
-                          ],
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(top: 10),
-                          child: Text(
-                            lst[index].description,
-                            style: TextStyle(
-                                fontFamily: 'Mansory',
-                                fontWeight: FontWeight.w300),
                           ),
-                        ),
-                          ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.black,
-                        ),
-                        onPressed: () {
-                          showDialog(
-                              context: context,
-                              builder: (context) => DailogWidget(
-                                    index: index,
-                                  ));
-                        },
-                        child: Text(
-                          "Add",
-                          style: TextStyle(fontFamily: "Mansory"),
-                        )),
-                      
-                        // ScaffoldMessenger.of(context).showSnackBar(
-                        //   const SnackBar(
-                        //     content: Text('Already in cart',style: TextStyle(fontFamily: "Mansory",fontSize: 20),),
-                        //     elevation: 10,
-                        //     duration: Duration(seconds: 1),
-                        //     backgroundColor: Color.fromARGB(255, 124, 124, 124),
-                        //   ),
-                        // );
-                        //:
-                      
-                     
-                      ],
-                    ),
-                  )
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Row(
+                                  children: [
+                                    lst[index].foodType == "veg"
+                                        ? Icon(
+                                            MyIcons.veg,
+                                            color: Colors.green,
+                                            size: _mediaQuery.size.width * .02,
+                                          )
+                                        : Icon(
+                                            MyIcons.veg,
+                                            color: Colors.red,
+                                            size: _mediaQuery.size.width * .02,
+                                          ),
+                                    SizedBox(
+                                      width: 5,
+                                    ),
+                                    Text(
+                                      lst[index].itemName,
+                                      style: TextStyle(
+                                          fontFamily: 'Mansory',
+                                          fontSize: 16.2,
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                  ],
+                                ),
+                                SizedBox(
+                                  height: 20,
+                                ),
+                                FittedBox(
+                                  fit: BoxFit.contain,
+                                  child: SizedBox(
+                                    width: _mediaQuery.size.width * .5,
+                                    child: Text(
+                                      lst[index].description,
+                                      style: TextStyle(
+                                          fontFamily: 'Mansory',
+                                          fontWeight: FontWeight.w300),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          Expanded(child: SizedBox()),
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Column(
+                              children: [
+                                Text(
+                                  lst[index].Price.toString(),
+                                  style: TextStyle(
+                                      fontFamily: 'Mansory',
+                                      fontWeight: FontWeight.w500),
+                                ),
+                                SizedBox(
+                                  height: 20,
+                                ),
+                                ElevatedButton(
+                                    style: ElevatedButton.styleFrom(
+                                        backgroundColor: Colors.orangeAccent,
+                                        shadowColor:
+                                            Color.fromARGB(255, 215, 149, 63),
+                                        elevation: 4),
+                                    onPressed: () {
+                                      showDialog(
+                                          context: context,
+                                          builder: (context) => DailogWidget(
+                                                index: index,
+                                              ));
+                                    },
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceEvenly,
+                                      children: [
+                                        Text(
+                                          "Add",
+                                          style: TextStyle(
+                                              fontFamily: "Mansory",
+                                              fontSize: 18),
+                                        ),
+                                        Icon(
+                                          FontAwesomeIcons.plus,
+                                          size: 16,
+                                        )
+                                      ],
+                                    )),
+                              ],
+                            ),
+                          ),
+                        ],
+                      )),
+                )
                 : SizedBox();
           },
           itemCount: lst.length,
         ),
       ),
       floatingActionButton: Container(
-        height: 90,
-        width: 90,
+        height: 70,
+        width: 70,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(38),
+        ),
         child: FloatingActionButton(
-          backgroundColor: Colors.black,
-          child: Icon(
-            Icons.home,
-            size: 55,
-            color: Colors.white,
-          ),
+          backgroundColor: Colors.white,
+          elevation: 10,
           onPressed: () {
-            Navigator.pushAndRemoveUntil(
+            Navigator.push(
                 context,
                 MaterialPageRoute(
-                    builder: (BuildContext context) => home(
-                          mediaQuery: _mediaQuery,
-                        )),
-                (Route<dynamic> route) => route is home);
+                  builder: (context) => CartWidget(),
+                ));
           },
+          child: Icon(
+            FontAwesomeIcons.shoppingCart,
+            size: 28,
+            color: Colors.orange,
+          ),
+        ),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      bottomNavigationBar: SizedBox(
+        height: 76,
+        child: BottomAppBar(
+          color: Colors.orange,
+          shape: CircularNotchedRectangle(),
+          notchMargin: 12,
         ),
       ),
     );

@@ -101,8 +101,13 @@ class DailogWidget extends StatelessWidget {
                           SizedBox(
                             width: 10,
                           ),
-                          cart.items.isEmpty
-                              ? ElevatedButton(
+                          // cart.items.any(
+                          //       (element) =>
+                          //           element.id == lst[index].id &&
+                          //           element.isHalfItem == false,
+                          //     )?
+                  
+                               ElevatedButton(
                                   onPressed: () {
                                     cart.addItems(CartItems(
                                       isHalfItem: false,
@@ -122,52 +127,61 @@ class DailogWidget extends StatelessWidget {
                                   style: ElevatedButton.styleFrom(
                                       backgroundColor: Colors.orangeAccent),
                                 )
-                              : Container(
-                                  padding: EdgeInsets.all(5),
-                                  width: 100,
-                                  decoration: BoxDecoration(
-                                      color: Colors.black,
-                                      borderRadius: BorderRadius.circular(12)),
-                                  child: Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceEvenly,
-                                    children: [
-                                      InkWell(
-                                        onTap: () {
-                                          if (cart.items
-                                                  .firstWhere((element) =>
-                                                      element.id ==
-                                                      lst[index].id)
-                                                  .quantity >
-                                              1) {
-                                            cart.decreaseQuantity(cart.items
-                                                .firstWhere((element) =>
-                                                    element.id ==
-                                                    lst[index].id));
-                                          }
-                                        },
-                                        child: Icon(
-                                          FontAwesomeIcons.minus,
-                                          color: Colors.white,
-                                        ),
-                                      ),
-                                      Text(
-                                        "${cart.items.firstWhere((element) => element.id == lst[index].id).quantity.toInt().toString()}",
-                                        style: TextStyle(
-                                            color: Colors.white, fontSize: 25),
-                                      ),
-                                      InkWell(
-                                        onTap: () => cart.increaseQuantity(
-                                            cart.items.firstWhere((element) =>
-                                                element.id == lst[index].id)),
-                                        child: Icon(
-                                          FontAwesomeIcons.plus,
-                                          color: Colors.white,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                )
+                              // : Container(
+                              //     padding: EdgeInsets.all(5),
+                              //     width: 100,
+                              //     decoration: BoxDecoration(
+                              //         color: Colors.black,
+                              //         borderRadius: BorderRadius.circular(12)),
+                              //     child: Row(
+                              //       mainAxisAlignment:
+                              //           MainAxisAlignment.spaceEvenly,
+                              //       children: [
+                              //         InkWell(
+                              //           onTap: () {
+                              //             if (cart.items
+                              //                     .firstWhere((element) =>
+                              //                         element.id ==
+                              //                         lst[index].id)
+                              //                     .quantity >
+                              //                 1) {
+                              //               cart.decreaseQuantity(cart.items
+                              //                   .firstWhere((element) =>
+                              //                       element.id ==
+                              //                       lst[index].id));
+                              //             }else{
+                              //                Text("Nothing is there");
+                              //             }    
+                                         
+                              //           },
+                              //           child: Icon(
+                              //             FontAwesomeIcons.minus,
+                              //             color: Colors.white,
+                              //           ),
+                              //         ),
+                              //         Text(
+                              //          // "${cart.items.firstWhere((element) => element.id == lst[index].id).quantity.toInt().toString()}",
+                                       
+                              //           "0",
+                              //           style: TextStyle(
+                              //               color: Colors.white, fontSize: 25),
+                              //         ),
+                              //         InkWell(
+                              //           onTap: () => 
+                                       
+                                        
+                              //           cart.increaseQuantity(
+                              //               cart.items.firstWhere((element) =>
+                              //                   element.id == lst[index].id)
+                              //                   ),
+                              //           child: Icon(
+                              //             FontAwesomeIcons.plus,
+                              //             color: Colors.white,
+                              //           ),
+                              //         ),
+                              //       ],
+                              //     ),
+                              //   )
                         ],
                       ),
                       Divider(
@@ -185,78 +199,80 @@ class DailogWidget extends StatelessWidget {
                           SizedBox(
                             width: 10,
                           ),
-                          cart.items.isNotEmpty
-                              // cart.items.any(
-                              //   (element) =>
-                              //       element.id == lst[index].id &&
-                              //       element.isHalfItem == true,
-                              // )
-                              ? ElevatedButton(
-                                  onPressed: () {
-                                    cart.addItems(CartItems(
-                                      isHalfItem: true,
-                                      id: lst[index].id,
-                                      title: lst[index].itemName,
-                                      price: lst[index].Price,
-                                      halfPrice: lst[index].halfPrice,
-                                      tax: 0.9,
-                                      quantity: 1,
-                                      foodType: "${lst[index].foodType}",
-                                    ));
-                                  },
-                                  child: Text(
-                                    "Add To Cart",
-                                    style: TextStyle(fontFamily: "Mansory"),
-                                  ),
-                                  style: ElevatedButton.styleFrom(
-                                      backgroundColor: Colors.orangeAccent),
-                                )
-                              : Container(
-                                  padding: EdgeInsets.all(5),
-                                  width: 100,
-                                  decoration: BoxDecoration(
-                                      color: Colors.black,
-                                      borderRadius: BorderRadius.circular(12)),
-                                  child: Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceEvenly,
-                                    children: [
-                                      InkWell(
-                                        onTap: () {
-                                          if (cart.items
-                                                  .firstWhere((element) =>
-                                                      element.id ==
-                                                      lst[index].id)
-                                                  .quantity >
-                                              1) {
-                                            cart.decreaseQuantity(cart.items
-                                                .firstWhere((element) =>
-                                                    element.id ==
-                                                    lst[index].id));
-                                          }
-                                        },
-                                        child: Icon(
-                                          FontAwesomeIcons.minus,
-                                          color: Colors.white,
-                                        ),
-                                      ),
-                                      Text(
-                                        "${cart.items.firstWhere((element) => element.id == lst[index].id).quantity.toInt().toString()}",
-                                        style: TextStyle(
-                                            color: Colors.white, fontSize: 25),
-                                      ),
-                                      InkWell(
-                                        onTap: () => cart.increaseQuantity(
-                                            cart.items.firstWhere((element) =>
-                                                element.id == lst[index].id)),
-                                        child: Icon(
-                                          FontAwesomeIcons.plus,
-                                          color: Colors.white,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                )
+                           
+                          // cart.items.any(
+                          //   (element) =>
+                          //       element.halfPrice == lst[index].halfPrice &&
+                          //       element.isHalfItem == true 
+                          // )?
+
+                          ElevatedButton(
+                            onPressed: () {
+                              cart.addItems(CartItems(
+                                isHalfItem: true,
+                                id: lst[index].id,
+                                title: lst[index].itemName,
+                                price: lst[index].Price,
+                                halfPrice: lst[index].halfPrice,
+                                tax: 0.9,
+                                quantity: 1,
+                                foodType: "${lst[index].foodType}",
+                              ));
+                            },
+                            child: Text(
+                              "Add To Cart",
+                              style: TextStyle(fontFamily: "Mansory"),
+                            ),
+                            style: ElevatedButton.styleFrom(
+                                backgroundColor: Colors.orangeAccent),
+                          )
+                          // : Container(
+                          //     padding: EdgeInsets.all(5),
+                          //     width: 100,
+                          //     decoration: BoxDecoration(
+                          //         color: Colors.black,
+                          //         borderRadius: BorderRadius.circular(12)),
+                          //     child: Row(
+                          //       mainAxisAlignment:
+                          //           MainAxisAlignment.spaceEvenly,
+                          //       children: [
+                          //         InkWell(
+                          //           onTap: () {
+                          //             if (cart.items
+                          //                     .firstWhere((element) =>
+                          //                         element.id ==
+                          //                         lst[index].id)
+                          //                     .quantity >
+                          //                 1) {
+                          //               cart.decreaseQuantity(cart.items
+                          //                   .firstWhere((element) =>
+                          //                       element.id ==
+                          //                       lst[index].id));
+                          //             }
+                          //           },
+                          //           child: Icon(
+                          //             FontAwesomeIcons.minus,
+                          //             color: Colors.white,
+                          //           ),
+                          //         ),
+                          //         Text(
+                          //           // "${cart.items.firstWhere((element) => element.id == lst[index].id).quantity.toInt().toString()}",
+                          //           "0",
+                          //           style: TextStyle(
+                          //               color: Colors.white, fontSize: 25),
+                          //         ),
+                          //         InkWell(
+                          //           onTap: () => cart.increaseQuantity(
+                          //               cart.items.firstWhere((element) =>
+                          //                   element.id == lst[index].id)),
+                          //           child: Icon(
+                          //             FontAwesomeIcons.plus,
+                          //             color: Colors.white,
+                          //           ),
+                          //         ),
+                          //       ],
+                          //     ),
+                          //   )
                         ],
                       ),
                       Divider(
@@ -269,6 +285,8 @@ class DailogWidget extends StatelessWidget {
               ),
             ),
             Expanded(child: SizedBox()),
+
+            Text("${cart.itemsCount}")
             // ElevatedButton(
             //   onPressed: () {
             //     cart.addItems(CartItems(

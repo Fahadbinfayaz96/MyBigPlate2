@@ -60,8 +60,8 @@ class home extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   SizedBox(
-                      height: _mediaQuery.size.height * .27,
-                      width: _mediaQuery.size.width * .3,
+                      height: _mediaQuery.size.height * .28,
+                   
                       child: Image.asset("assets/images/logowob.png")),
                       SizedBox(
                         width: _mediaQuery.size.width * .7,
@@ -69,13 +69,14 @@ class home extends StatelessWidget {
 
                         child: Image.asset("assets/images/homev.jpg",fit: BoxFit.fill,)),
                   Text(
-                    "Discover Your Food",
+                    "Giving your Hunger new Options",
                     style: TextStyle(
                         fontFamily: "Mansory",
                         fontWeight: FontWeight.bold,
-                        fontSize: 35),
+                        fontSize: 34),
                   ),
-                  Text(""),
+                Text(""),
+                  SizedBox(height: 4,)
                 ],
               ),
             );
@@ -103,7 +104,7 @@ class home extends StatelessWidget {
           },
           child: Icon(
             FontAwesomeIcons.arrowRight,
-            color: Colors.orange,
+            color: Color.fromARGB(255, 246, 165, 59),
           ),
         ),
       ),
@@ -111,15 +112,18 @@ class home extends StatelessWidget {
       bottomNavigationBar: SizedBox(
         height: 120,
         child: BottomAppBar(
-            color: Colors.orange,
+            color: Color.fromARGB(255, 242, 160, 52),
             shape: CircularNotchedRectangle(),
             notchMargin: 15,
             child: Align(
-                alignment: Alignment.center,
-                child: Text(
-                  "Continue",
-                  style: TextStyle(
-                      color: Colors.white, fontFamily: "Mansory", fontSize: 16),
+                alignment: Alignment.bottomCenter,
+                child: Padding(
+                  padding: const EdgeInsets.only(bottom: 30),
+                  child: Text(
+                    "Continue",
+                    style: TextStyle(
+                        color: Colors.white, fontFamily: "Mansory", fontSize: 20,),
+                  ),
                 ))),
       ),
     );
