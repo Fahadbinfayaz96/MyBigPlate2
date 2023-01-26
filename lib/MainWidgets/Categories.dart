@@ -27,10 +27,6 @@ class Categories extends StatelessWidget {
           return Column(
             children: [
               BannerWidget(),
-              // FoodTypeWidget(
-              //   color: Colors.green,
-              //   color1: Colors.red,
-              // ),
               Expanded(
                 child: Padding(
                   padding: const EdgeInsets.only(
@@ -61,31 +57,37 @@ class Categories extends StatelessWidget {
                                 borderRadius: BorderRadius.circular(15)),
                             child: Column(
                               children: [
-                                Container(
-                                  alignment: Alignment.center,
-                                  width: double.infinity,
-                                  height: 185,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(10),
-                                    image: DecorationImage(
-                                      image: AssetImage(cat[index].image),
-                                      fit: BoxFit.cover,
-                                      colorFilter: ColorFilter.mode(
-                                        Colors.black.withOpacity(.6),
-                                        BlendMode.hardLight,
+                                Flexible(
+                                  fit: FlexFit.tight,
+                                  flex: 1,
+                                  child: Container(
+                                    alignment: Alignment.center,
+                                    width: double.infinity,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(10),
+                                      image: DecorationImage(
+                                        image: AssetImage(cat[index].image),
+                                        fit: BoxFit.cover,
+                                        colorFilter: ColorFilter.mode(
+                                          Colors.black.withOpacity(.6),
+                                          BlendMode.hardLight,
+                                        ),
                                       ),
                                     ),
                                   ),
                                 ),
                                 Padding(
                                   padding: const EdgeInsets.only(top: 8),
-                                  child: Text(
-                                    "${cat[index].categoryName.toString()}",
-                                    style: TextStyle(
-                                      color: Colors.black,
-                                      fontSize: 18.5,
-                                      fontWeight: FontWeight.bold,
-                                      fontFamily: 'Mansory',
+                                  child: SizedBox(
+                                    child: Text(
+                                      "${cat[index].categoryName.toString()}",
+                                      style: TextStyle(
+                                        color: Colors.black,
+                                        fontSize:
+                                            _mediaQuery2.size.width * .023,
+                                        fontWeight: FontWeight.bold,
+                                        fontFamily: 'Mansory',
+                                      ),
                                     ),
                                   ),
                                 ),
@@ -111,6 +113,9 @@ class Categories extends StatelessWidget {
             ],
           );
         }
+        // else if(_mediaQuery2.devicePixelRatio==){
+
+        // }
 
         //===========================================Landscape========================================================
         else {
@@ -166,12 +171,11 @@ class Categories extends StatelessWidget {
                       ),
                     ),
                   ),
-                
                 ],
               ),
               Expanded(
                 child: Padding(
-                  padding: const EdgeInsets.only(left: 15, right: 15,top: 15),
+                  padding: const EdgeInsets.only(left: 15, right: 15, top: 15),
                   child: GridView.builder(
                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                         crossAxisCount: 3,
@@ -203,7 +207,6 @@ class Categories extends StatelessWidget {
                                     image: DecorationImage(
                                       image: AssetImage(cat[index].image),
                                       fit: BoxFit.cover,
-                                     
                                     ),
                                   ),
                                 ),
@@ -214,10 +217,10 @@ class Categories extends StatelessWidget {
                                       text: cat[index].categoryName,
                                       style: TextStyle(
                                         color: Colors.black,
-                                        fontSize: 18.5,
+                                        fontSize: 18,
                                         fontWeight: FontWeight.bold,
                                         fontFamily: 'Mansory',
-                                      ), 
+                                      ),
                                     ),
                                   ),
                                 )
@@ -247,7 +250,6 @@ class Categories extends StatelessWidget {
       floatingActionButton: Container(
         height: 70,
         width: 70,
-        
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(38),
         ),
@@ -262,7 +264,8 @@ class Categories extends StatelessWidget {
                 ));
           },
           child: Icon(
-            FontAwesomeIcons.shoppingCart,size: 28,
+            FontAwesomeIcons.shoppingCart,
+            size: 28,
             color: Colors.orange,
           ),
         ),

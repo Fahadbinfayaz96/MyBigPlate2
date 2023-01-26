@@ -38,11 +38,11 @@ class home extends StatelessWidget {
 
                       Image.asset("assets/images/homev.jpg"),
                   Text(
-                    "Discover Your Food",
+                    "Giving your Hunger new Options",
                     style: TextStyle(
                         fontFamily: "Mansory",
                         fontWeight: FontWeight.bold,
-                        fontSize: 35),
+                        fontSize: _mediaQuery.size.width * .05),
                   ),
                   Text(""),
                 ],

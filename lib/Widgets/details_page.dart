@@ -60,17 +60,17 @@ class SingleWidget extends StatelessWidget {
                   SizedBox(
                     height: 5,
                   ),
-                  Text("Description",style: TextStyle(
-                            fontFamily: 'Mansory', fontWeight: FontWeight.w700,fontSize: 18)),
-                  FittedBox(
-                    fit: BoxFit.contain,
-                    child: SizedBox(
-                      width: _mediaQuery.size.width * .87,
-                      child: Text(
-                        "Chicken Biryani is a delicious savory rice dish that is loaded with spicy marinated chicken, caramelized onions, and flavorful saffron rice. For my Biryani, I simplify the order of operations, while retaining the traditional layered approach to assembling it.",
-                        style: TextStyle(
-                            fontFamily: 'Mansory', fontWeight: FontWeight.w300),
-                      ),
+                  Text("Description",
+                      style: TextStyle(
+                          fontFamily: 'Mansory',
+                          fontWeight: FontWeight.w700,
+                          fontSize: 18)),
+                  SizedBox(
+                    width: _mediaQuery.size.width * .78,
+                    child: Text(
+                      "Chicken Biryani is a delicious savory rice dish that is loaded with spicy marinated chicken, caramelized onions, and flavorful saffron rice. For my Biryani, I simplify the order of operations, while retaining the traditional layered approach to assembling it.",
+                      style: TextStyle(
+                          fontFamily: 'Mansory', fontWeight: FontWeight.w300),
                     ),
                   ),
                 ],
@@ -85,18 +85,9 @@ class SingleWidget extends StatelessWidget {
                   ),
                   ElevatedButton(
                     onPressed: () {},
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Text(
-                          "Add",
-                          style: TextStyle(fontSize: 18),
-                        ),
-                        Icon(
-                          FontAwesomeIcons.plus,
-                          size: 16,
-                        )
-                      ],
+                    child: Text(
+                      "Add",
+                      style: TextStyle(fontSize: 18),
                     ),
                     style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.orangeAccent),

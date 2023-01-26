@@ -27,8 +27,8 @@ class DailogWidget extends StatelessWidget {
           borderRadius: BorderRadius.all(Radius.circular(15.0))),
       child: Container(
         padding: EdgeInsets.all(14.0),
-        height: _mediaQuery.size.height * .53,
-        width: _mediaQuery.size.width * .4,
+        height: _mediaQuery.size.height / 1.9,
+        width: _mediaQuery.size.width / 1.5,
         child: Column(
           children: [
             Align(
@@ -81,210 +81,214 @@ class DailogWidget extends StatelessWidget {
             SizedBox(
               height: 30,
             ),
-            SizedBox(
-              height: 156,
-              width: _mediaQuery.size.width,
-              child: Card(
-                elevation: 10,
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Column(
-                    children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text("Full",
-                              style: TextStyle(
-                                  fontFamily: "Mansory", fontSize: 20)),
-                          Expanded(child: SizedBox()),
-                          Text(lst[index].Price.toString()),
-                          SizedBox(
-                            width: 10,
-                          ),
-                          // cart.items.any(
-                          //       (element) =>
-                          //           element.id == lst[index].id &&
-                          //           element.isHalfItem == false,
-                          //     )?
-                  
-                               ElevatedButton(
-                                  onPressed: () {
-                                    cart.addItems(CartItems(
-                                      isHalfItem: false,
-                                      id: lst[index].id,
-                                      title: lst[index].itemName,
-                                      price: lst[index].Price,
-                                      halfPrice: lst[index].halfPrice,
-                                      tax: 0.9,
-                                      quantity: 1,
-                                      foodType: "${lst[index].foodType}",
-                                    ));
-                                  },
-                                  child: Text(
-                                    "Add To Cart",
-                                    style: TextStyle(fontFamily: "Mansory"),
-                                  ),
-                                  style: ElevatedButton.styleFrom(
-                                      backgroundColor: Colors.orangeAccent),
-                                )
-                              // : Container(
-                              //     padding: EdgeInsets.all(5),
-                              //     width: 100,
-                              //     decoration: BoxDecoration(
-                              //         color: Colors.black,
-                              //         borderRadius: BorderRadius.circular(12)),
-                              //     child: Row(
-                              //       mainAxisAlignment:
-                              //           MainAxisAlignment.spaceEvenly,
-                              //       children: [
-                              //         InkWell(
-                              //           onTap: () {
-                              //             if (cart.items
-                              //                     .firstWhere((element) =>
-                              //                         element.id ==
-                              //                         lst[index].id)
-                              //                     .quantity >
-                              //                 1) {
-                              //               cart.decreaseQuantity(cart.items
-                              //                   .firstWhere((element) =>
-                              //                       element.id ==
-                              //                       lst[index].id));
-                              //             }else{
-                              //                Text("Nothing is there");
-                              //             }    
-                                         
-                              //           },
-                              //           child: Icon(
-                              //             FontAwesomeIcons.minus,
-                              //             color: Colors.white,
-                              //           ),
-                              //         ),
-                              //         Text(
-                              //          // "${cart.items.firstWhere((element) => element.id == lst[index].id).quantity.toInt().toString()}",
-                                       
-                              //           "0",
-                              //           style: TextStyle(
-                              //               color: Colors.white, fontSize: 25),
-                              //         ),
-                              //         InkWell(
-                              //           onTap: () => 
-                                       
-                                        
-                              //           cart.increaseQuantity(
-                              //               cart.items.firstWhere((element) =>
-                              //                   element.id == lst[index].id)
-                              //                   ),
-                              //           child: Icon(
-                              //             FontAwesomeIcons.plus,
-                              //             color: Colors.white,
-                              //           ),
-                              //         ),
-                              //       ],
-                              //     ),
-                              //   )
-                        ],
-                      ),
-                      Divider(
-                        thickness: 1,
-                        color: Colors.black,
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text("Half",
-                              style: TextStyle(
-                                  fontFamily: "Mansory", fontSize: 20)),
-                          Expanded(child: SizedBox()),
-                          Text(lst[index].halfPrice.toString()),
-                          SizedBox(
-                            width: 10,
-                          ),
-                           
-                          // cart.items.any(
-                          //   (element) =>
-                          //       element.halfPrice == lst[index].halfPrice &&
-                          //       element.isHalfItem == true 
-                          // )?
-
-                          ElevatedButton(
-                            onPressed: () {
-                              cart.addItems(CartItems(
-                                isHalfItem: true,
-                                id: lst[index].id,
-                                title: lst[index].itemName,
-                                price: lst[index].Price,
-                                halfPrice: lst[index].halfPrice,
-                                tax: 0.9,
-                                quantity: 1,
-                                foodType: "${lst[index].foodType}",
-                              ));
-                            },
-                            child: Text(
-                              "Add To Cart",
-                              style: TextStyle(fontFamily: "Mansory"),
+            Flexible(
+              fit: FlexFit.tight,
+              flex: 1,
+              child: SizedBox(
+                width: _mediaQuery.size.width,
+                child: Card(
+                  elevation: 10,
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Column(
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text("Full",
+                                style: TextStyle(
+                                    fontFamily: "Mansory", fontSize: 20)),
+                            Expanded(child: SizedBox()),
+                            Text(lst[index].Price.toString()),
+                            SizedBox(
+                              width: 10,
                             ),
-                            style: ElevatedButton.styleFrom(
-                                backgroundColor: Colors.orangeAccent),
-                          )
-                          // : Container(
-                          //     padding: EdgeInsets.all(5),
-                          //     width: 100,
-                          //     decoration: BoxDecoration(
-                          //         color: Colors.black,
-                          //         borderRadius: BorderRadius.circular(12)),
-                          //     child: Row(
-                          //       mainAxisAlignment:
-                          //           MainAxisAlignment.spaceEvenly,
-                          //       children: [
-                          //         InkWell(
-                          //           onTap: () {
-                          //             if (cart.items
-                          //                     .firstWhere((element) =>
-                          //                         element.id ==
-                          //                         lst[index].id)
-                          //                     .quantity >
-                          //                 1) {
-                          //               cart.decreaseQuantity(cart.items
-                          //                   .firstWhere((element) =>
-                          //                       element.id ==
-                          //                       lst[index].id));
-                          //             }
-                          //           },
-                          //           child: Icon(
-                          //             FontAwesomeIcons.minus,
-                          //             color: Colors.white,
-                          //           ),
-                          //         ),
-                          //         Text(
-                          //           // "${cart.items.firstWhere((element) => element.id == lst[index].id).quantity.toInt().toString()}",
-                          //           "0",
-                          //           style: TextStyle(
-                          //               color: Colors.white, fontSize: 25),
-                          //         ),
-                          //         InkWell(
-                          //           onTap: () => cart.increaseQuantity(
-                          //               cart.items.firstWhere((element) =>
-                          //                   element.id == lst[index].id)),
-                          //           child: Icon(
-                          //             FontAwesomeIcons.plus,
-                          //             color: Colors.white,
-                          //           ),
-                          //         ),
-                          //       ],
-                          //     ),
-                          //   )
-                        ],
-                      ),
-                      Divider(
-                        thickness: 1,
-                        color: Colors.black,
-                      ),
-                    ],
+                            // cart.items.any(
+                            //       (element) =>
+                            //           element.id == lst[index].id &&
+                            //           element.isHalfItem == false,
+                            //     )?
+
+                            ElevatedButton(
+                              onPressed: () {
+                                cart.addItems(CartItems(
+                                  isHalfItem: false,
+                                  id: lst[index].id,
+                                  title: lst[index].itemName,
+                                  price: lst[index].Price,
+                                  halfPrice: lst[index].halfPrice,
+                                  tax: 0.9,
+                                  quantity: 1,
+                                  foodType: "${lst[index].foodType}",
+                                ));
+                              },
+                              child: Text(
+                                "Add To Cart",
+                                style: TextStyle(fontFamily: "Mansory"),
+                              ),
+                              style: ElevatedButton.styleFrom(
+                                  backgroundColor: Colors.orangeAccent),
+                            )
+                            // : Container(
+                            //     padding: EdgeInsets.all(5),
+                            //     width: 100,
+                            //     decoration: BoxDecoration(
+                            //         color: Colors.black,
+                            //         borderRadius: BorderRadius.circular(12)),
+                            //     child: Row(
+                            //       mainAxisAlignment:
+                            //           MainAxisAlignment.spaceEvenly,
+                            //       children: [
+                            //         InkWell(
+                            //           onTap: () {
+                            //             if (cart.items
+                            //                     .firstWhere((element) =>
+                            //                         element.id ==
+                            //                         lst[index].id)
+                            //                     .quantity >
+                            //                 1) {
+                            //               cart.decreaseQuantity(cart.items
+                            //                   .firstWhere((element) =>
+                            //                       element.id ==
+                            //                       lst[index].id));
+                            //             }else{
+                            //                Text("Nothing is there");
+                            //             }
+
+                            //           },
+                            //           child: Icon(
+                            //             FontAwesomeIcons.minus,
+                            //             color: Colors.white,
+                            //           ),
+                            //         ),
+                            //         Text(
+                            //          // "${cart.items.firstWhere((element) => element.id == lst[index].id).quantity.toInt().toString()}",
+
+                            //           "0",
+                            //           style: TextStyle(
+                            //               color: Colors.white, fontSize: 25),
+                            //         ),
+                            //         InkWell(
+                            //           onTap: () =>
+
+                            //           cart.increaseQuantity(
+                            //               cart.items.firstWhere((element) =>
+                            //                   element.id == lst[index].id)
+                            //                   ),
+                            //           child: Icon(
+                            //             FontAwesomeIcons.plus,
+                            //             color: Colors.white,
+                            //           ),
+                            //         ),
+                            //       ],
+                            //     ),
+                            //   )
+                          ],
+                        ),
+                        Divider(
+                          thickness: 1,
+                          color: Colors.black,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text("Half",
+                                style: TextStyle(
+                                    fontFamily: "Mansory", fontSize: 20)),
+                            Expanded(child: SizedBox()),
+                            Text(lst[index].halfPrice.toString()),
+                            SizedBox(
+                              width: 10,
+                            ),
+
+                            // cart.items.any(
+                            //   (element) =>
+                            //       element.halfPrice == lst[index].halfPrice &&
+                            //       element.isHalfItem == true
+                            // )?
+
+                            ElevatedButton(
+                              onPressed: () {
+                                cart.addItems(CartItems(
+                                  isHalfItem: true,
+                                  id: lst[index].id,
+                                  title: lst[index].itemName,
+                                  price: lst[index].Price,
+                                  halfPrice: lst[index].halfPrice,
+                                  tax: 0.9,
+                                  quantity: 1,
+                                  foodType: "${lst[index].foodType}",
+                                ));
+                              },
+                              child: Text(
+                                "Add To Cart",
+                                style: TextStyle(fontFamily: "Mansory"),
+                              ),
+                              style: ElevatedButton.styleFrom(
+                                  backgroundColor: Colors.orangeAccent),
+                            )
+                            // : Container(
+                            //     padding: EdgeInsets.all(5),
+                            //     width: 100,
+                            //     decoration: BoxDecoration(
+                            //         color: Colors.black,
+                            //         borderRadius: BorderRadius.circular(12)),
+                            //     child: Row(
+                            //       mainAxisAlignment:
+                            //           MainAxisAlignment.spaceEvenly,
+                            //       children: [
+                            //         InkWell(
+                            //           onTap: () {
+                            //             if (cart.items
+                            //                     .firstWhere((element) =>
+                            //                         element.id ==
+                            //                         lst[index].id)
+                            //                     .quantity >
+                            //                 1) {
+                            //               cart.decreaseQuantity(cart.items
+                            //                   .firstWhere((element) =>
+                            //                       element.id ==
+                            //                       lst[index].id));
+                            //             }
+                            //           },
+                            //           child: Icon(
+                            //             FontAwesomeIcons.minus,
+                            //             color: Colors.white,
+                            //           ),
+                            //         ),
+                            //         Text(
+                            //           // "${cart.items.firstWhere((element) => element.id == lst[index].id).quantity.toInt().toString()}",
+                            //           "0",
+                            //           style: TextStyle(
+                            //               color: Colors.white, fontSize: 25),
+                            //         ),
+                            //         InkWell(
+                            //           onTap: () => cart.increaseQuantity(
+                            //               cart.items.firstWhere((element) =>
+                            //                   element.id == lst[index].id)),
+                            //           child: Icon(
+                            //             FontAwesomeIcons.plus,
+                            //             color: Colors.white,
+                            //           ),
+                            //         ),
+                            //       ],
+                            //     ),
+                            //   )
+                          ],
+                        ),
+                        Divider(
+                          thickness: 1,
+                          color: Colors.black,
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),
             ),
-            Expanded(child: SizedBox()),
+            SizedBox(
+              height: 10,
+            ),
 
             Text("${cart.itemsCount}")
             // ElevatedButton(

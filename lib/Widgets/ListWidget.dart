@@ -32,8 +32,7 @@ class ListWidget extends StatelessWidget {
     final lst = lstData.items;
     final cart = Provider.of<CartProvider>(context);
     var _mediaQuery = MediaQuery.of(context);
-    // final dailog = Provider.of<DailogBoxProvider>(context);
-    // final dlist = dailog.items;
+  
     return Scaffold(
       appBar: AppBar(
           iconTheme: const IconThemeData(color: Colors.white),
@@ -60,131 +59,128 @@ class ListWidget extends StatelessWidget {
           itemBuilder: (context, index) {
             return products = CatId == lst[index].catId
                 ? InkWell(
-                  onTap: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (context)=>SingleWidget()));
-                  },
-                  child: Container(
-                      height: 220,
-                      width: _mediaQuery.size.width,
-                      margin: EdgeInsets.all(15),
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(25),
-                        boxShadow: [
-                          BoxShadow(
-                              color: Color.fromARGB(255, 239, 183, 110),
-                              blurRadius: 2,
-                              spreadRadius: 1)
-                        ],
-                      ),
-                      child: Row(
-                        children: [
-                          ClipRRect(
-                            borderRadius: BorderRadius.only(
-                                topLeft: Radius.circular(25),
-                                bottomLeft: Radius.circular(25)),
-                            child: Image.asset(
-                              "assets/images/platters.jpg",
-                              fit: BoxFit.cover,
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => SingleWidget()));
+                    },
+                    child: Container(
+                        height: _mediaQuery.size.height * .16,
+                        margin: EdgeInsets.all(10),
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(25),
+                          boxShadow: [
+                            BoxShadow(
+                                color: Color.fromARGB(255, 239, 183, 110),
+                                blurRadius: 2,
+                                spreadRadius: 1)
+                          ],
+                        ),
+                        child: Row(
+                          children: [
+                            SizedBox(
+                              height: _mediaQuery.size.height,
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.only(
+                                    topLeft: Radius.circular(25),
+                                    bottomLeft: Radius.circular(25)),
+                                child: Image.asset(
+                                  "assets/images/platters.jpg",
+                                  fit: BoxFit.cover,
+                                ),
+                              ),
                             ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Row(
-                                  children: [
-                                    lst[index].foodType == "veg"
-                                        ? Icon(
-                                            MyIcons.veg,
-                                            color: Colors.green,
-                                            size: _mediaQuery.size.width * .02,
-                                          )
-                                        : Icon(
-                                            MyIcons.veg,
-                                            color: Colors.red,
-                                            size: _mediaQuery.size.width * .02,
-                                          ),
-                                    SizedBox(
-                                      width: 5,
-                                    ),
-                                    Text(
-                                      lst[index].itemName,
-                                      style: TextStyle(
-                                          fontFamily: 'Mansory',
-                                          fontSize: 16.2,
-                                          fontWeight: FontWeight.bold),
-                                    ),
-                                  ],
-                                ),
-                                SizedBox(
-                                  height: 20,
-                                ),
-                                FittedBox(
-                                  fit: BoxFit.contain,
-                                  child: SizedBox(
-                                    width: _mediaQuery.size.width * .5,
-                                    child: Text(
-                                      lst[index].description,
-                                      style: TextStyle(
-                                          fontFamily: 'Mansory',
-                                          fontWeight: FontWeight.w300),
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Row(
+                                    children: [
+                                      lst[index].foodType == "veg"
+                                          ? Icon(
+                                              MyIcons.veg,
+                                              color: Colors.green,
+                                              size:
+                                                  _mediaQuery.size.width * .02,
+                                            )
+                                          : Icon(
+                                              MyIcons.veg,
+                                              color: Colors.red,
+                                              size:
+                                                  _mediaQuery.size.width * .02,
+                                            ),
+                                      SizedBox(
+                                        width: 5,
+                                      ),
+                                      Text(
+                                        lst[index].itemName,
+                                        style: TextStyle(
+                                            fontFamily: 'Mansory',
+                                            fontSize: 16.2,
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                    ],
+                                  ),
+                                  SizedBox(
+                                    height: 20,
+                                  ),
+                                  Flexible(
+                                    fit: FlexFit.loose,
+                                    flex: 1,
+                                    child: SizedBox(
+                                      width: _mediaQuery.size.width * .5,
+                                      child: Text(
+                                        lst[index].description,
+                                        style: TextStyle(
+                                            fontFamily: 'Mansory',
+                                            fontWeight: FontWeight.w300),
+                                      ),
                                     ),
                                   ),
-                                ),
-                              ],
+                                ],
+                              ),
                             ),
-                          ),
-                          Expanded(child: SizedBox()),
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Column(
-                              children: [
-                                Text(
-                                  lst[index].Price.toString(),
-                                  style: TextStyle(
-                                      fontFamily: 'Mansory',
-                                      fontWeight: FontWeight.w500),
-                                ),
-                                SizedBox(
-                                  height: 20,
-                                ),
-                                ElevatedButton(
-                                    style: ElevatedButton.styleFrom(
-                                        backgroundColor: Colors.orangeAccent,
-                                        shadowColor:
-                                            Color.fromARGB(255, 215, 149, 63),
-                                        elevation: 4),
-                                    onPressed: () {
-                                      showDialog(
-                                          context: context,
-                                          builder: (context) => DailogWidget(
-                                                index: index,
-                                              ));
-                                    },
-                                    child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceEvenly,
-                                      children: [
-                                        Text(
-                                          "Add",
+                            Expanded(child: SizedBox()),
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.end,
+                                children: [
+                                  Text(
+                                    lst[index].Price.toString(),
+                                    style: TextStyle(
+                                        fontFamily: 'Mansory',
+                                        fontWeight: FontWeight.w500),
+                                  ),
+                                  SizedBox(
+                                    height: 20,
+                                  ),
+                                  ElevatedButton(
+                                      style: ElevatedButton.styleFrom(
+                                          backgroundColor: Colors.orangeAccent,
+                                          shadowColor:
+                                              Color.fromARGB(255, 215, 149, 63),
+                                          elevation: 4),
+                                      onPressed: () {
+                                        showDialog(
+                                            context: context,
+                                            builder: (context) => DailogWidget(
+                                                  index: index,
+                                                ));
+                                      },
+                                      child: Text("Add",
                                           style: TextStyle(
-                                              fontFamily: "Mansory",
-                                              fontSize: 18),
-                                        ),
-                                        Icon(
-                                          FontAwesomeIcons.plus,
-                                          size: 16,
-                                        )
-                                      ],
-                                    )),
-                              ],
+                                            fontFamily: "Mansory",
+                                          ))),
+                                ],
+                              ),
                             ),
-                          ),
-                        ],
-                      )),
-                )
+                          ],
+                        )),
+                  )
                 : SizedBox();
           },
           itemCount: lst.length,
