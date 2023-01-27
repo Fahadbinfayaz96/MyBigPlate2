@@ -35,8 +35,7 @@ class home extends StatelessWidget {
                       height: _mediaQuery.size.height * .3,
                       width: _mediaQuery.size.width * .6,
                       child: Image.asset("assets/images/logowob.png")),
-
-                      Image.asset("assets/images/homev.jpg"),
+                  Image.asset("assets/images/homev.png"),
                   Text(
                     "Giving your Hunger new Options",
                     style: TextStyle(
@@ -61,13 +60,14 @@ class home extends StatelessWidget {
                 children: [
                   SizedBox(
                       height: _mediaQuery.size.height * .28,
-                   
                       child: Image.asset("assets/images/logowob.png")),
-                      SizedBox(
-                        width: _mediaQuery.size.width * .7,
-                        height:_mediaQuery.size.height * .40,
-
-                        child: Image.asset("assets/images/homev.jpg",fit: BoxFit.fill,)),
+                  SizedBox(
+                      width: _mediaQuery.size.width * .7,
+                      height: _mediaQuery.size.height * .40,
+                      child: Image.asset(
+                        "assets/images/homev.png",
+                        fit: BoxFit.fill,
+                      )),
                   Text(
                     "Giving your Hunger new Options",
                     style: TextStyle(
@@ -75,8 +75,10 @@ class home extends StatelessWidget {
                         fontWeight: FontWeight.bold,
                         fontSize: 34),
                   ),
-                Text(""),
-                  SizedBox(height: 4,)
+                  Text(""),
+                  SizedBox(
+                    height: 4,
+                  )
                 ],
               ),
             );
@@ -122,7 +124,10 @@ class home extends StatelessWidget {
                   child: Text(
                     "Continue",
                     style: TextStyle(
-                        color: Colors.white, fontFamily: "Mansory", fontSize: 20,),
+                      color: Colors.white,
+                      fontFamily: "Mansory",
+                      fontSize: 20,
+                    ),
                   ),
                 ))),
       ),

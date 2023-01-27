@@ -3,6 +3,7 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:mybigplate2/Widgets/CartQuantityWidget.dart';
 import 'package:provider/provider.dart';
@@ -29,8 +30,8 @@ class DailogWidget extends StatelessWidget {
           borderRadius: BorderRadius.all(Radius.circular(15.0))),
       child: Container(
         padding: EdgeInsets.all(14.0),
-        height: _mediaQuery.size.height / 1.9,
-        width: _mediaQuery.size.width / 1.5,
+        height:ScreenUtil.defaultSize.height * .7,
+        width: ScreenUtil.defaultSize.width * 1.5,
         child: Column(
           children: [
             Align(
@@ -107,14 +108,16 @@ class DailogWidget extends StatelessWidget {
                             ),
                             ((cart.items.isNotEmpty &&
                                         cart.items.any((e) =>
-                                            !(e.id == lst[index].id &&
-                                                e.isHalfItem == false))) ||
+                                            !(
+                                              e.id == lst[index].id &&
+                                                e.isHalfItem == false ))) ||
                                     cart.items.isEmpty)
                                 ? ElevatedButton(
                                     onPressed: () {
                                       for (var e in cart.items) {
                                         log('${e.id}: ${e.isHalfItem} ');
                                       }
+                                      //  log('From Full Item button: ${(cart.items.isNotEmpty && cart.items.any((e) => (e.id == lst[index].id && e.isHalfItem==false)))}');
                                       cart.addItems(CartItems(
                                         isHalfItem: false,
                                         id: lst[index].id,
@@ -156,9 +159,7 @@ class DailogWidget extends StatelessWidget {
                                                   .firstWhere((element) =>
                                                       element.id ==
                                                       lst[index].id));
-                                            } else {
-                                              Text("Nothing is there");
-                                            }
+                                            } 
                                           },
                                           child: Icon(
                                             FontAwesomeIcons.minus,
@@ -201,16 +202,23 @@ class DailogWidget extends StatelessWidget {
                               width: 10,
                             ),
                             (cart.items.isNotEmpty &&
-                                        cart.items.any(
-                                          (e) => e.id == lst[index].id &&
+                           
+                                   (     cart.items.any(
+                                          (e) => 
+                                           e.id == lst[index].id &&
                                                   e.isHalfItem == true
-                                              ? false
-                                              : true,
+                                              ? false//false
+                                              : true//true
+                                              )
+                                        
                                         )) ||
                                     cart.items.isEmpty
                                 ? ElevatedButton(
                                     onPressed: () {
-                                      log('From half Item button: ${(cart.items.isNotEmpty && cart.items.any((e) => (e.id == lst[index].id && e.isHalfItem == true)))}');
+                                        for (var e in cart.items) {
+                                        log('${e.id}: ${e.isHalfItem} ');
+                                      }
+                                      //log('From half Item button: ${(cart.items.isNotEmpty && cart.items.any((e) => (e.id == lst[index].id && e.isHalfItem==true)))}');
                                       cart.addItems(CartItems(
                                         isHalfItem: true,
                                         id: lst[index].id,

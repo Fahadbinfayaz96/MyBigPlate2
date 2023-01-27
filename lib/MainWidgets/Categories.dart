@@ -68,10 +68,10 @@ class Categories extends StatelessWidget {
                                       image: DecorationImage(
                                         image: AssetImage(cat[index].image),
                                         fit: BoxFit.cover,
-                                        colorFilter: ColorFilter.mode(
-                                          Colors.black.withOpacity(.6),
-                                          BlendMode.hardLight,
-                                        ),
+                                        // colorFilter: ColorFilter.mode(
+                                        //   Colors.black.withOpacity(.6),
+                                        //   BlendMode.hardLight,
+                                        // ),
                                       ),
                                     ),
                                   ),

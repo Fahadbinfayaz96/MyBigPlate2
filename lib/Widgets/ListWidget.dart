@@ -67,7 +67,7 @@ class ListWidget extends StatelessWidget {
                               builder: (context) => SingleWidget()));
                     },
                     child: Container(
-                        height: _mediaQuery.size.height * .16,
+                        height:ScreenUtil.defaultSize.height * .27,
                         margin: EdgeInsets.all(10),
                         decoration: BoxDecoration(
                           color: Colors.white,
