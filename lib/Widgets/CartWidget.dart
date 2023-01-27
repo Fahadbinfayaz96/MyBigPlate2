@@ -39,20 +39,19 @@ class CartWidget extends StatelessWidget {
           )),
       body: Column(
         children: [
-          SizedBox(
-            height: _mediaQueryyy.size.height * .60,
-            child: ListView.builder(
-              itemBuilder: (context, index) {
-                return CartItemList(
-                  index: index,
-                );
-              },
-              itemCount: cartList.length,
+          Expanded(
+            child: SizedBox(
+              child: ListView.builder(
+                itemBuilder: (context, index) {
+                  return CartItemList(
+                    index: index,
+                  );
+                },
+                itemCount: cartList.length,
+              ),
             ),
           ),
-          Expanded(child: SizedBox()),
           Container(
-              height: _mediaQueryyy.size.height * .20,
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.only(

@@ -2,6 +2,7 @@
 
 import 'package:floating_bottom_navigation_bar/floating_bottom_navigation_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:mybigplate2/MainWidgets/Categories.dart';
 import 'package:mybigplate2/MainWidgets/Home.dart';
@@ -32,7 +33,7 @@ class ListWidget extends StatelessWidget {
     final lst = lstData.items;
     final cart = Provider.of<CartProvider>(context);
     var _mediaQuery = MediaQuery.of(context);
-  
+
     return Scaffold(
       appBar: AppBar(
           iconTheme: const IconThemeData(color: Colors.white),
@@ -92,58 +93,57 @@ class ListWidget extends StatelessWidget {
                                 ),
                               ),
                             ),
-                            Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Row(
-                                    children: [
-                                      lst[index].foodType == "veg"
-                                          ? Icon(
-                                              MyIcons.veg,
-                                              color: Colors.green,
-                                              size:
-                                                  _mediaQuery.size.width * .02,
-                                            )
-                                          : Icon(
-                                              MyIcons.veg,
-                                              color: Colors.red,
-                                              size:
-                                                  _mediaQuery.size.width * .02,
-                                            ),
-                                      SizedBox(
-                                        width: 5,
-                                      ),
-                                      Text(
-                                        lst[index].itemName,
-                                        style: TextStyle(
-                                            fontFamily: 'Mansory',
-                                            fontSize: 16.2,
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                    ],
-                                  ),
-                                  SizedBox(
-                                    height: 20,
-                                  ),
-                                  Flexible(
-                                    fit: FlexFit.loose,
-                                    flex: 1,
-                                    child: SizedBox(
-                                      width: _mediaQuery.size.width * .5,
+                            Expanded(
+                              child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Row(
+                                      children: [
+                                        lst[index].foodType == "veg"
+                                            ? Icon(
+                                                MyIcons.veg,
+                                                color: Colors.green,
+                                                size: _mediaQuery.size.width *
+                                                    .02,
+                                              )
+                                            : Icon(
+                                                MyIcons.veg,
+                                                color: Colors.red,
+                                                size: _mediaQuery.size.width *
+                                                    .02,
+                                              ),
+                                        SizedBox(
+                                          width: 5,
+                                        ),
+                                        Expanded(
+                                          child: Text(
+                                            lst[index].itemName,
+                                            style: TextStyle(
+                                                fontFamily: 'Mansory',
+                                                fontSize: 16.2,
+                                                fontWeight: FontWeight.bold),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                    SizedBox(
+                                      height: 20.h,
+                                    ),
+                                    SizedBox(
                                       child: Text(
                                         lst[index].description,
                                         style: TextStyle(
-                                            fontFamily: 'Mansory',
-                                            fontWeight: FontWeight.w300),
+                                          fontFamily: 'Mansory',
+                                          fontWeight: FontWeight.w300,
+                                        ),
                                       ),
                                     ),
-                                  ),
-                                ],
+                                  ],
+                                ),
                               ),
                             ),
-                            Expanded(child: SizedBox()),
                             Padding(
                               padding: const EdgeInsets.all(8.0),
                               child: Column(

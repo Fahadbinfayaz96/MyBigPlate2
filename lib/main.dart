@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, sized_box_for_whitespace, no_leading_underscores_for_local_identifiers, sort_child_properties_last, use_key_in_widget_constructors
 
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mybigplate2/Models/DialogBoxModel.dart';
 import 'package:mybigplate2/Providers/CartProvider.dart';
 import 'package:mybigplate2/Providers/CategoryProvider.dart';
@@ -28,13 +29,15 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(
           create: (context) => CartProvider(),
         ),
-          ChangeNotifierProvider(
+        ChangeNotifierProvider(
           create: (context) => DailogBoxProvider(),
         )
       ],
-      child: MaterialApp(
-        home: MyHomePage(),
-        debugShowCheckedModeBanner: false,
+      child: ScreenUtilInit(
+        builder: (context, child) => MaterialApp(
+          home: MyHomePage(),
+          debugShowCheckedModeBanner: false,
+        ),
       ),
     );
   }
